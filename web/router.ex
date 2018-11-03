@@ -17,18 +17,23 @@ defmodule Discuss.Router do
     # Use the default browser stack
     pipe_through(:browser)
 
-    # get "/", TopicController, :index
-    # get "/topics/new", TopicController, :new
-    # post "/topics", TopicController, :create
-    # get "/topics/:id/edit", TopicController, :edit
-    # put "/topics/:id", TopicController, :update
+    get("/", TopicController, :index)
+    get("/topics/new", TopicController, :new)
+    post("/topics", TopicController, :create)
+    get("/topics/:id/edit", TopicController, :edit)
+    put("/topics/:id", TopicController, :update)
+    delete("/topics/:id", TopicController, :delete)
 
-    resources("/topics", TopicController)
+    # resources("/topics", TopicController)
 
-    get "/steamex/return_to", AuthController, :callback
   end
 
-  steamex_route_auth()
+  scope "/auth", Discuss do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
 
   # Other scopes may use custom stacks.
   # scope "/api", Discuss do
