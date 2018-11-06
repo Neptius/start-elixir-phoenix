@@ -13,6 +13,8 @@ defmodule Discuss.Router do
     plug(:accepts, ["json"])
   end
 
+  steamex_route_auth
+
   scope "/", Discuss do
     # Use the default browser stack
     pipe_through(:browser)
@@ -26,14 +28,17 @@ defmodule Discuss.Router do
 
     # resources("/topics", TopicController)
 
+    get("/steam/callback", AuthController, :callback)
   end
 
-  scope "/auth", Discuss do
-    pipe_through :browser
+  # scope "/auth", Discuss do
+  #   pipe_through(:browser)
+  #
+  #  get("/:provider", AuthController, :request)
+  #  get("/:provider/callback", AuthController, :callback)
+  # end
 
-    get "/:provider", AuthController, :request
-    get "/:provider/callback", AuthController, :callback
-  end
+  # steamex_route_auth()
 
   # Other scopes may use custom stacks.
   # scope "/api", Discuss do

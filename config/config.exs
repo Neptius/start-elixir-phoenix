@@ -26,10 +26,5 @@ config :logger, :console,
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
 
-config :ueberauth, Ueberauth,
-  providers: [
-    steam: {Ueberauth.Strategy.Steam, []}
-  ]
-
-config :ueberauth, Ueberauth.Strategy.Steam,
-  api_key: System.get_env("STEAM_API_KEY")
+config :steamex, Steamex,
+  redirect_to: "/steam/callback"

@@ -20,7 +20,7 @@ defmodule Discuss.Mixfile do
   def application do
     [
       mod: {Discuss, []},
-      extra_applications: [:logger, :ueberauth, :ueberauth_steam]
+      extra_applications: [:logger]
     ]
   end
 
@@ -42,8 +42,8 @@ defmodule Discuss.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:plug_cowboy, "~> 1.0"},
-      {:ueberauth, "~> 0.5.0"},
-      {:ueberauth_steam, "~> 0.1.0"}
+      {:steamex, "~> 0.0.9"},
+      {:httpoison, "~> 1.4"}
     ]
   end
 

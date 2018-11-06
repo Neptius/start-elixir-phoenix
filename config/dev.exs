@@ -55,3 +55,5 @@ config :discuss, Discuss.Repo,
   hostname: "localhost",
   port: 4307,
   pool_size: 10
+
+import_config "dev.secret.exs"
